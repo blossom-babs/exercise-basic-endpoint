@@ -1,55 +1,106 @@
 import express, { Request, Response } from 'express';
-import bodyParser from 'body-parser';
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const PORT = 3000;
 
-interface Food {
-  breakfast: string;
-  lunch: string;
-  dinner: string;
-}
-let foodTimetable: Food = {
-  breakfast: 'tea',
-  lunch: 'sandwich',
-  dinner: 'vegetable',
+type Student = {
+  id: number;
+  name: string;
+  age: number;
+  subjects: string[];
+  grade: string;
 };
 
+let students = [
+  {
+    id: 1,
+    name: 'Blossom Babalola',
+    age: 21,
+    subjects: ['Web3', 'DSA', 'System Design'],
+    grade: 'A1',
+  },
+  {
+    id: 2,
+    name: 'Breakthrough Babalola',
+    age: 13,
+    subjects: ['Yoruba', 'Literature', 'Fine-arts'],
+    grade: 'A1',
+  },
+  {
+    id: 3,
+    name: 'Treasure Babalola',
+    age: 19,
+    subjects: ['International relations', 'French'],
+    grade: 'A1',
+  },
+  {
+    id: 4,
+    name: 'Lulu Babalola',
+    age: 1,
+    subjects: [],
+    grade: 'C4',
+  },
+];
+
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).json(foodTimetable);
+  try {
+    if (students.length < 1) {
+      res.status(200).json({ message: `You have no students data` });
+    } else {
+      res.status(200).json(students);
+    }
+  } catch (error) {
+    res.status(400).json(error);
+  }
 });
 
 app.post('/', (req: Request, res: Response) => {
-  console.log(req.body);
-  let data = Object.keys(req.query)[0];
-  let meal;
-  if (data === 'breakfast') {
-    meal = req.query.breakfast as string;
-    foodTimetable.breakfast = meal;
-  } else if (data === 'lunch') {
-    meal = req.query.lunch as string;
-    foodTimetable.lunch = meal;
-  }
-  if (data === 'dinner') {
-    meal = req.query.dinner as string;
-    foodTimetable.dinner = meal;
-  }
-
   try {
-    res.status(200).json(foodTimetable);
+    const student: Student = req.body;
+    students.push(student);
+    res.status(200).json(students);
   } catch (error) {
-    console.log(error);
-    res.send('You have entered an invalid format');
+    res.status(400).json(error);
   }
 });
 
 app.put('/:id', (req: Request, res: Response) => {
-  res.send('update data on this endpoint');
+  try {
+    const id = req.params.id;
+    const value = students.filter((data) => {
+      if (data.id === Number(id)) {
+        return data;
+      }
+    });
+    if (value.length < 1) {
+      res.status(404).json({ message: `Student with id ${id} does not exist` });
+    } else {
+      res.status(200).json(value);
+    }
+  } catch (error) {
+    res.status(400).json(error);
+  }
 });
 
 app.delete('/:id', (req: Request, res: Response) => {
-  res.send('delete data on this endpoint');
+  try {
+    const id = req.params.id;
+    const value = students.filter((data) => {
+      if (data.id !== Number(id)) {
+        return data;
+      }
+    });
+    if (value.length < 1) {
+      res.status(404).json({ message: `Student with id ${id} does not exist` });
+    } else {
+      res.status(200).json(value);
+    }
+  } catch (error) {
+    res.status(400).json(error);
+  }
 });
 
 app.listen(PORT, () => console.log(`app is listening on port ${PORT}`));

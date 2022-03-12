@@ -1,22 +1,48 @@
-# Typescript, eslint and prettier configuration repositiory
+# Node application that has a POST, GET, PUT and DELETE endpoint, using express
 
-This is a boilerplate code for reusable typescript setup, prettier code formatter, eslint linter, and jasmine unit testing
+Create a simple [node](https://nodejs.org/en/) application that has a [POST, GET, PUT and DELETE endpoint](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), using [express](https://expressjs.com/).
 
-### Helpful links
+### Requirements
+1. The POST endpoint should create new data.
+2. The GET endpoint should get the created or updated data as applicable.
+3. The PUT endpoint should UPDATE the data.
+4. The DELETE endpoint should delete the data.
 
-- [Typescript installation](https://www.typescriptlang.org/download).
-- [Prettier](https://prettier.io/)
-- [Eslint](https://eslint.org/)
-- [Jasmine](https://jasmine.github.io/)
-- [use Jasmine spec reporter with typescript](https://github.com/bcaudan/jasmine-spec-reporter/tree/673e22cd3b13732b421a25e862dbe887692ed345/examples/typescript)
+__No persistence is required. No Deployment is required.__
 
-### Bonus resources
+## Bootstrapped with
+1. [Typescript](https://www.typescriptlang.org/)
+2. [ExpressJs](https://expressjs.com/)
+3. [NodeJs](https://nodejs.org/en/)
+4. [eslint linter](https://eslint.org/)
+5. [Prettier code formatter](https://prettier.io/)
 
-1. [Typescript, eslint, prettier](https://moduscreate.com/blog/lint-style-typescript/)
-2. [How to use eslint with prettier](https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/)
-3. [Enforcing Coding Conventions with Husky Pre-commit Hooks](https://khalilstemmler.com/blogs/tooling/enforcing-husky-precommit-hooks/)
-4. [How to use Prettier with ESLint and TypeScript in VSCode](https://khalilstemmler.com/blogs/tooling/prettier/)
+## Getting started
+```
+$ git clone https://github.com/blossom-babs/exercise-basic-endpoint
+$ cd exercise-basic-endpoint
+$ npm install
+$ npm run build
+```
+If you want to contribute, before any of the steps above, you would need to __fork__ this project first.
+You're ready to hack (and | or contribute) ✌️
 
-*Note: husky version > 4 does not work.*
+## Endpoints
+1. GET /
+2. POST /
+3. PUT /:id
+4. DELETE /:id
+5. GET /:id
 
-*["type:module" should not be used](https://stackoverflow.com/a/60998638/14247589)*
+## 🤝 Contributing
+Contributions, issues and feature requests are welcome!
+
+## Authors
+🌸 __Blossom__
+- Github: [@blossom-babs](https://github.com/blossom-babs/)
+- LinkedIn: [Blossom Babalola](https://www.linkedin.com/in/blossom-babalola/)
+- Twitter: [@BlossomBabalola](https://twitter.com/BlossomBabalola)
+
+### Show your support
+- Give a ⭐ if you like this project
+- [Buy me a coffee](https://www.buymeacoffee.com/blossombabs)
