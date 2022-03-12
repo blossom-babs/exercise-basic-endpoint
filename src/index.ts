@@ -14,7 +14,7 @@ type Student = {
   grade: string;
 };
 
-let students = [
+const students = [
   {
     id: 1,
     name: 'Blossom Babalola',
