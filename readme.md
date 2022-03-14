@@ -28,11 +28,25 @@ If you want to contribute, before any of the steps above, you would need to __fo
 You're ready to hack (and | or contribute) ✌️
 
 ## Endpoints
-1. GET /
-2. POST /
-3. PUT /:id
-4. DELETE /:id
-5. GET /:id
+1. GET /students
+> returns an array of the students object
+2. POST /students
+> pushes new student data created to students array and returns the array.
+> Request should be made using a JSON object like this 👇
+```
+{
+"id": 5,
+"name": "Molade folayan",
+"age": 23,
+"subjects":["Arts", "Commerce", "Physics"]
+}
+```
+3. PUT /students/:id
+> updates the subject of the id of the student to be edited
+4. DELETE /students/:id
+> retuns the students array without the deleted student data
+5. GET /students/:id
+> returns the student data that matches the id
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
